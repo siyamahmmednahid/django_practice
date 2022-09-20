@@ -1,0 +1,47 @@
+{% extends 'office/base.html' %}
+
+{% block main_block %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h3>{{ title }}</h3>
+    <a href="{% url 'office:addEmployee' %}" class="btn btn-primary">Add Employee</a>
+</div>
+
+{% if employee_list %}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Position</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Action</th>
+    </tr>
+    {% for employee in employee_list %}
+    <tr>
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>
+            <a href="{% url 'office:employeeDetails' employee_id=employee.id %}" class="btn btn-primary">View</a>
+            <a href="{% url 'office:editEmployee' employee_id=employee.id %}" class="btn btn-warning">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No employees found</p>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock  %}

@@ -1,0 +1,10 @@
+{% extends 'office/base.html' %}
+{% block main_block %}
+
+<form action="" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+{% endblock  %}

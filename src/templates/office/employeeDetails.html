@@ -1,0 +1,47 @@
+{% extends 'office/base.html' %}
+{% block main_block %}
+
+<a href="{% url 'office:index' %}" class="btn btn-normal mb-2 p-0">Back</a>
+<div class="d-flex justify-content-between mb-3">
+    <h3>{{ employee.name }} Details</h3>
+    <a href="{% url 'office:editEmployee' employee_id=employee.id %}" class="btn btn-primary ml-auto">Edit</a>
+</div>
+<ul class="list-group">
+    <li class="list-group-item">Email : {{ employee.email }}</li>
+    <li class="list-group-item">Phone : {{ employee.phone }}</li>
+    <li class="list-group-item">Position : {{ employee.position }}</li>
+    <li class="list-group-item">Department : {{ employee.department }}</li>
+    <li class="list-group-item">Salary : {{ employee.salary }}</li>
+    <li class="list-group-item">Addtess : {{ employee.address }}</li>
+</ul>
+
+<a href="{% url 'office:addProject' employee_id=employee.id %}" class="btn btn-primary my-3">Add Project</a>
+{% if project_list %}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Project Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    {% for project in project_list %}
+    <tr>
+        <td>{{ project.id }}</td>
+        <td>{{ project.project_name }}</td>
+        <td>{{ project.project_start_date }}</td>
+        <td>{{ project.project_end_date }}</td>
+        <td>{{ project.project_status }}</td>
+        <td>
+            <a href="" class="btn btn-primary">Details</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No projects found</p>
+{% endif %}
+
+{% endblock  %}
