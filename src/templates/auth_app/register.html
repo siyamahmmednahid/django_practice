@@ -1,0 +1,23 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+{% block main_block %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="m-0">{{ title }}</h3>
+    <a href="{% url 'auth_app:index' %}" class="btn btn-primary">Back</a>
+</div>
+
+{% if registered %}
+    <div class="alert alert-success" role="alert">
+        You have successfully registered!
+    </div>
+{% else %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ userForm.as_p }}
+        {{ userInfoForm.as_p }}
+        <input type="submit" name="submit" value="Register">
+    </form>
+{% endif %}
+
+{% endblock %}

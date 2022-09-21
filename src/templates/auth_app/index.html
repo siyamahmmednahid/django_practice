@@ -1,0 +1,10 @@
+{% extends 'auth_app/base.html' %}
+{% load static %}
+{% block main_block %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="m-0">{{ title }}</h3>
+    <a href="{% url 'auth_app:register' %}" class="btn btn-primary">Register</a>
+</div>
+
+{% endblock %}
