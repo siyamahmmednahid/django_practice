@@ -1,15 +1,15 @@
 {% extends 'office/base.html' %}
 {% block main_block %}
 
-<a href="{% url 'office:index' %}" class="btn btn-normal mb-2 p-0">Back</a>
+{% comment %} <a href="{% url 'office:employeeDetails' %}" class="btn btn-normal mb-2 p-0">Back</a> {% endcomment %}
 <div class="d-flex justify-content-between mb-3">
     <h3 class="m-0">{{ title }}</h3>
 </div>
 
 <form action="" method="POST">
-    {{ form.as_p }}
     {% csrf_token %}
-    <input type="submit" value="Submit" class="btn btn-primary">
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
 </form>
 
 {% endblock  %}

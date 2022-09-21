@@ -1,0 +1,22 @@
+{% extends 'office/base.html' %}
+{% block main_block %}
+
+{% comment %} <a href="{% url 'office:employeeDetails' employee_id=project.project_id %}" class="btn btn-normal mb-2 p-0">Back</a> {% endcomment %}
+<div class="d-flex justify-content-between mb-3">
+    <h3>{{ project.name }} Details</h3>
+</div>
+<ul class="list-group">
+    {{ project.name }}
+    <li class="list-group-item">Project ID : {{ project.id }}</li>
+    <li class="list-group-item">Project Name : {{ project.project_name }}</li>
+    <li class="list-group-item">Start Date : {{ project.project_start_date }}</li>
+    <li class="list-group-item">End Date : {{ project.project_end_date }}</li>
+    <li class="list-group-item">Staus : {{ project.project_status }}</li>
+    <li class="list-group-item">Description : {{ project.project_description }}</li>
+    <li class="list-group-item">
+        <a href="{% url 'office:updateProject' project_id=project.id %}" class="btn btn-primary">Update</a>
+        <a href="{% url 'office:deleteProject' project_id=project.id %}" class="btn btn-danger">Delete</a>
+    </li>
+</ul>
+
+{% endblock  %}

@@ -31,7 +31,7 @@
         <td>
             <a href="{% url 'office:employeeDetails' employee_id=employee.id %}" class="btn btn-primary">View</a>
             <a href="{% url 'office:editEmployee' employee_id=employee.id %}" class="btn btn-warning">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <a href="{% url 'office:deleteEmployee' employee_id=employee.id %}" class="btn btn-danger">Delete</a>
         </td>
     </tr>
     {% endfor %}

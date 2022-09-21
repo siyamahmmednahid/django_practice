@@ -34,11 +34,11 @@ def employeeDetails(request, employee_id):
     employeeDict = {'title': 'Employee Details', 'employee': employee, 'project_list': project_list}
     return render(request, 'office/employeeDetails.html', context=employeeDict)
 
+
 # For Edit Employee Page
-def editEmployee(request, employee_id, path):
+def editEmployee(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     form = EmployeeForm(instance=employee)
-
     if request.method == 'POST':
         form = EmployeeForm(request.POST, instance=employee)
         if form.is_valid():
@@ -49,8 +49,16 @@ def editEmployee(request, employee_id, path):
     return render(request, 'office/editEmployee.html', context=editEmployeeDict)
 
 
+# For Delete Employee Page
+def deleteEmployee(request, employee_id):
+    employee = Employee.objects.get(id=employee_id)
+    employee.delete()
+    return index(request)
+
+
 # For Add Project Page
 def addProject(request, employee_id):
+    employee = Employee.objects.get(id=employee_id)
     form = ProjectForm(initial={'name': employee_id})
 
     if request.method == 'POST':
@@ -59,8 +67,36 @@ def addProject(request, employee_id):
             form.save(commit=True)
             return employeeDetails(request, employee_id)
 
-    addProjectDict = {'title': 'Add Project', 'form': form}
+    addProjectDict = {'title': 'Add Project', 'form': form, 'employee': employee}
     return render(request, 'office/addProject.html', context=addProjectDict)
+
+
+# For Project Details Page
+def projectDetails(request, project_id):
+    project = Project.objects.get(id=project_id)
+    projectDict = {'title': 'Project Details', 'project': project}
+    return render(request, 'office/projectDetails.html', context=projectDict)
+
+
+# For Project Update Page
+def updateProject(request, project_id):
+    project = Project.objects.get(id=project_id)
+    form = ProjectForm(instance=project)
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save(commit=True)
+            return employeeDetails(request, project.name.id)
+
+    updateProjectDict = {'title': 'Update Project', 'form': form}
+    return render(request, 'office/updateProject.html', context=updateProjectDict)
+
+
+# For Delete Project Page
+def deleteProject(request, project_id):
+    project = Project.objects.get(id=project_id)
+    project.delete()
+    return employeeDetails(request)
 
 
 

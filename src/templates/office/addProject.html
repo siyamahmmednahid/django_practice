@@ -1,6 +1,11 @@
 {% extends 'office/base.html' %}
 {% block main_block %}
 
+<a href="{% url 'office:employeeDetails' employee_id=employee.id %}" class="btn btn-normal mb-2 p-0">Back</a>
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="m-0">{{ title }}</h3>
+</div>
+
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
