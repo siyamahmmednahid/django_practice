@@ -1,0 +1,13 @@
+{% extends 'cbv_app/base.html' %}
+{% load static %}
+{% block main_block %}
+    <div class="d-flex justify-content-between mb-3">
+        <h3 class="m-0">Home Page</h3>
+        <a href="{% url 'cbv_app:student_create' %}" class="btn btn-primary">Add Student</a>
+    </div>
+    <ul>
+        {% for student in students %}
+            <li><a href="{% url 'cbv_app:student_detail' pk=student.pk %}">{{ student.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

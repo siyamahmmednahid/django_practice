@@ -1,0 +1,10 @@
+{% extends 'cbv_app/base.html' %}
+{% block main_block %}
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="m-0">{{ subject.subject_name }} Details</h3>
+    <a href="" class="btn btn-warning">Edit Subject</a>
+</div>
+<p>Subject Code: {{ subject.subject_code }}</p>
+<p>Subject Credit: {{ subject.subject_credit }}</p>
+
+{% endblock  %}

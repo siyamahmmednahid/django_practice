@@ -1,0 +1,22 @@
+{% extends 'cbv_app/base.html' %}
+{% block main_block %}
+<div class="d-flex justify-content-between mb-3">
+    <h3 class="m-0">{{ student.name }} Details</h3>
+    <a href="{% url 'cbv_app:student_update' pk=student.pk %}" class="btn btn-warning">Edit Student</a>
+    <a href="{% url 'cbv_app:student_delete' pk=student.pk %}" class="btn btn-danger">Delete Student</a>
+</div>
+<p>Email: {{ student.email }}</p>
+<p>Phone: {{ student.phone }}</p>
+<p>Batch: {{ student.batch }}</p>
+<p>Roll: {{ student.roll }}</p>
+
+<hr>
+
+<a href="" class="btn btn-primary mb-3">Add Subject</a>
+<ul>
+    {% for subject in student.subjects.all %}
+        <li><a href="{% url 'cbv_app:subject_detail' pk=subject.id %}">{{ subject }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock  %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'office',
     'auth_app',
+    'cbv_app',
 ]
 
 MIDDLEWARE = [

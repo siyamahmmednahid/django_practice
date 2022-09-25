@@ -1,0 +1,10 @@
+{% extends 'cbv_app/base.html' %}
+{% block main_block %}
+<h3>Delete {{ student.name }}</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="btn btn-danger">
+    <a href="{% url 'cbv_app:student_detail' pk=student.pk %}" class="btn btn-primary">Cancel</a>
+</form>
+
+{% endblock  %}
